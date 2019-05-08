@@ -1,0 +1,39 @@
+#main-div{
+	height:auto;
+	width:1400px;
+	
+}
+.main-table{
+    height:400px;
+	width:600px;
+	
+	
+    padding:10px:	
+}
+.main-table-image{
+	
+	 height:400px;
+	 width:600px;
+	 border-radius: 100px 100px;
+	 box-shadow: 5px 10px 8px 10px #0b396d;
+}
+
+.main-table-2nd{
+	height:400px;
+	 width:300px;
+	
+	padding:10px;
+}
+.main-table-2nd-div{
+	height:380px;
+	width:260px;
+	background-color:white;
+	box-shadow: 5px 10px 8px 10px #888888;
+	
+}
+.main-table-2nd-div-image{
+	
+    height:200px;
+	width:260px;
+	
+}

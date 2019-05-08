@@ -1,0 +1,57 @@
+.dashboard-main-div{
+	background-color:white;
+	width:70%;
+	height:auto;
+	border: 2px solid #0b396d;
+	padding:50px;
+	
+}
+#dashboard-divs{
+	background-color:white;
+	width:auto;
+	height:auto;
+	border: 2px solid #0b396d;	
+	position:relative;
+	float:left;
+	margin-left:5%;
+	margin-top:2%;
+	padding:1%;
+}
+#dashboard-divs:hover{
+	background-color:orange;
+	
+}
+
+#dashboard-img{
+	
+	width:160px;
+	height:120px;
+    float:left;	
+}
+
+.viewprofile-table{
+	
+	background-color:lightgrey;
+	width:70%;
+	height:20%;	
+	text-align:left;
+}
+
+
+.viewprofile-table td{
+	
+	width:50%;
+	height:50%;
+	border: 2px solid #0b396d;
+	text-align:left;
+}
+
+
+.editProfile{
+
+   width:500;
+   height:500;
+   background-color:grey;
+  padding-top: 40px;
+	color:white;	
+}

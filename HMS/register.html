@@ -1,0 +1,182 @@
+<html>
+<head>
+
+<!---JQuery Imports -->
+
+
+
+<!---JQuery Imports -->
+
+<link rel="stylesheet" type="text/css" href="index.css">
+<link rel="stylesheet" type="text/css" href="indexbody.css">
+<script src="index.js"></script>
+<title>HMS</title>
+</head>
+<center><body>
+<header>
+<div id="header-div1">
+    <img src="images/e-logo.png" id="heaader-logo">  
+	<div id="header-menu1">
+                    <ul id="menu-ul">
+						<li onclick="
+						
+						document.getElementById('login').style.display='none'
+						document.getElementById('register').style.display='block'
+						
+						" ><a href="#">Register</a></li>
+					    <li onclick="
+						document.getElementById('register').style.display='none'
+					
+						document.getElementById('login').style.display='block'
+						"><a href="#">Log In</a></li>	
+                        						
+				    </ul>
+					
+					
+				</div>
+	            <h1 style="font-family:Brush Script MT;">E-Health Management System</h1><tr>
+		        <div id="header-menu2">
+			        <ul id="menu-ul">
+						<li><a href="#">Home</a></li>
+					    <li><a href="#">About</a></li>
+						<li><a href="#">Doctors</a></li>
+						<li><a href="#">Appointments</a></li>
+						<li><a href="#">Contact</a></li>
+				    </ul>	  
+	</div>
+</div>
+</header>
+
+<!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
+<div id="main-div">
+</div><br><br>
+<center><div id="login" class="magadiv">
+<h1 style="float:left; margin-left:100; "> Log In </h1><br></br><br>
+  <form action="login.php" class="form" method="post">
+  	<button  style="background-color:red; width:50;  border-radius: 100px 100px; "  onclick="document.getElementById('login').style.display='none'">X</button><br><br></br>
+
+    
+    <label><b>Username</b></label><br><br>
+	<input type="text" placeholder="Enter Email" name="email" required><br><br><br>
+    <label><b>Password</b></label><br><br>
+	<input type="password" placeholder="Enter Password" name="password" required><br><br><br>
+	<input type="submit">Login<br><br><br>
+	
+  </form>
+
+</div></center>
+
+<center><div id="register" class="magadiv">
+    <h1 style="float:left; margin-left:100;"> Register </h1><br></br><br>
+  <form action="index.php" class="form" method="post">
+  <button  style="background-color:red; width:50;  border-radius: 100px 100px; "  onclick="document.getElementById('register').style.display='none'">X</button><br><br></br>
+
+   
+	  <label><b>Name</b></label><br><br>
+	<input type="text" placeholder="Enter First name" name="name" required><br><br>
+
+	  <label><b>Date of Birth</b></label><br><br>
+	<input type="text" placeholder="Enter Date of Birth" name="dob" required><br><br>
+	
+    <label><b>Email</b></label></br></br>
+	<input type="email" placeholder="Enter Username" name="email" required><br><br>
+    <label><b>Password</b></label><br><br>
+	<input type="password" placeholder="Enter Password" name="password" required><br><br><br>
+	<button type="submit">Register Me!</button><br><br><br>
+	
+  </form>
+
+</div></center>
+
+<!-- ...................................... PHP Code for Registe...........................................................-->
+
+<?php
+$server="127.0.0.1";
+$user="root";
+$password="";
+$dbname = "hms";
+$conn = mysqli_connect($server, $user, $password, $dbname);
+if(!$conn){	
+	die("not connection".mysqli_connect_error());	
+}
+ if($_POST){	
+	$name =$_POST['name'];
+	$dob=$_POST['dob'];
+	$email=$_POST['email'];
+	$password=$_POST['password'];
+    $UserType="patient";	
+	
+		
+	$sql = "SELECT UserName, UserEmail FROM user WHERE UserName = '$name' OR UserEmail = '$email'";
+    $result = mysqli_query($conn, $sql);
+
+if (mysqli_num_rows($result) > 0) {
+    // output data of each row
+        echo'<script>alert("You have Already Registered !")</script>';
+	echo '<script>window.location.href = "index.php";</script>';
+    }
+ else {
+    
+	$sql="INSERT INTO `user`(`UserName`, `UserGender`, `UserEmail`, `UserPassword`, `UserNumber`, `UserDiscription`, `UserAddress`, `UserType`, `UserImage`, `UserStatus`)
+	                 VALUES ('$name','','$email','$password','','','','$UserType','','')";
+    if (mysqli_query($conn, $sql)) {
+	  echo'<script>alert("You have Successfully Registered !")</script>';
+	echo '<script>window.location.href = "index.php";</script>';
+  
+    } else {
+    echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+           }
+ }
+mysqli_close($conn);
+
+}
+
+?>
+
+<!--;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;-->
+<footer>
+<div id="footer-div">
+    <div id="footer-content-div">
+	    <table id="footer-table-id">
+		    <tr> 
+			     <td class="footer-table">
+				    <ul class="footer-list">
+					    <br><br>
+					    <li><a href="#">Home</a></li>
+					    <li><a href="#">About</a></li>
+						<li><a href="#">Doctors</a></li>
+						<li><a href="#">Appointments</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				 </td>
+				 <td class="footer-table">
+				    <ul  class="footer-list">
+					    <br><br>
+					    <li><a href="#">Home</a></li>
+					    <li><a href="#">About</a></li>
+						<li><a href="#">Doctors</a></li>
+						<li><a href="#">Appointments</a></li>
+						<li><a href="#">Contact</a></li>
+					</ul>
+				 </td>
+				 <td class="footer-table">
+				 	<ul  class="footer-list">
+					    <br><br>
+					    <li><a href="#"><b>Contact Details</b></a></li>
+					    <li><a href="#">E-Health Management System</a></li>
+						<li><a href="#">Ph: +353 899659857</a></li>
+						<li><a href="#">Email: toorhusnain@gmail.com</a></li>
+						<li><a href="#">Address: Dublin, Ireland.</a></li>
+					</ul>
+				 </td>
+			</tr><br>
+			
+		</table><br>
+		<tr><center><h2 style="color:black;">Copy Right 2018  Husnain Azeem Toor </h2><center></tr>
+	</div>
+
+</div>
+</footer>
+</body>
+</center>
+</html>
